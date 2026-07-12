@@ -1,0 +1,192 @@
+/* ============================================
+   KasirKu POS — Custom Styles
+   ============================================ */
+
+* { box-sizing: border-box; }
+body { font-family: 'Geist', 'Inter', -apple-system, sans-serif; }
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
+
+/* ---- Glass ---- */
+.glass { background: rgba(255,255,255,0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.glass-strong { background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+
+/* ---- Animations ---- */
+@keyframes slideUp {
+    0% { opacity: 0; transform: translateY(14px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.92); }
+    60% { transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+}
+@keyframes cartBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+}
+@keyframes slideRight {
+    0% { opacity: 0; transform: translateX(18px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes successPulse {
+    0% { box-shadow: 0 0 0 0 rgba(100,144,110,0.5); }
+    70% { box-shadow: 0 0 0 16px rgba(100,144,110,0); }
+    100% { box-shadow: 0 0 0 0 rgba(100,144,110,0); }
+}
+@keyframes toastIn {
+    0% { opacity: 0; transform: translateY(-16px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes toastOut {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-16px) scale(0.95); }
+}
+@keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+@keyframes modalIn {
+    0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.anim-slide-up   { animation: slideUp 0.45s cubic-bezier(0.16,1,0.3,1) forwards; }
+.anim-pop-in     { animation: popIn 0.35s cubic-bezier(0.16,1,0.3,1) forwards; }
+.anim-cart-bounce{ animation: cartBounce 0.3s ease; }
+.anim-slide-right{ animation: slideRight 0.3s cubic-bezier(0.16,1,0.3,1) forwards; }
+.anim-spin       { animation: spin 0.8s linear infinite; }
+.toast-enter     { animation: toastIn 0.3s ease forwards; }
+.toast-exit      { animation: toastOut 0.3s ease forwards; }
+
+.product-card {
+    animation: slideUp 0.5s cubic-bezier(0.16,1,0.3,1) forwards;
+    opacity: 0;
+}
+.cart-item {
+    animation: slideRight 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.skeleton {
+    background: linear-gradient(90deg, #f5f5f5 25%, #ebebeb 50%, #f5f5f5 75%);
+    background-size: 400px 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* ---- Category active ---- */
+.cat-btn.active {
+    background: #64906E !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: 0 4px 14px rgba(100,144,110,0.3);
+}
+
+/* ---- Quantity buttons ---- */
+.qty-btn { transition: all 0.15s ease; }
+.qty-btn:hover { background: #64906E; color: #fff; transform: scale(1.1); }
+.qty-btn:active { transform: scale(0.92); }
+
+/* ---- Checkout button ---- */
+.checkout-btn {
+    background: linear-gradient(135deg, #64906E 0%, #3e5443 100%);
+    transition: all 0.3s ease;
+}
+.checkout-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(100,144,110,0.4);
+}
+.checkout-btn:active:not(:disabled) { transform: translateY(0); }
+.checkout-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* ---- Sidebar icon ---- */
+.sidebar-icon { transition: all 0.2s ease; }
+.sidebar-icon:hover { background: rgba(100,144,110,0.12); color: #64906E; }
+.sidebar-icon.active { background: rgba(100,144,110,0.12); color: #64906E; }
+
+/* ---- Product card hover ---- */
+.product-card-inner { transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+.product-card-inner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.1);
+}
+
+/* ---- Add button ---- */
+.add-btn { transition: all 0.2s ease; }
+.add-btn:hover:not(:disabled) {
+    background: #64906E; color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 4px 14px rgba(100,144,110,0.3);
+}
+.add-btn:active:not(:disabled) { transform: scale(0.92); }
+.add-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* ---- Modal overlay ---- */
+.modal-overlay { animation: fadeIn 0.2s ease forwards; }
+.modal-content { animation: modalIn 0.35s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+/* ---- Stok badges ---- */
+.stok-low  { color: #ef4444; background: #fef2f2; }
+.stok-ok   { color: #64906E; background: #f0f7f1; }
+
+/* ---- Focus ---- */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #64906E;
+    box-shadow: 0 0 0 3px rgba(100,144,110,0.12);
+}
+
+/* ---- Image preview ---- */
+.img-preview-container {
+    position: relative;
+    overflow: hidden;
+    border: 2px dashed #e5e5e5;
+    transition: border-color 0.2s;
+}
+.img-preview-container:hover { border-color: #64906E; }
+.img-preview-container.has-image { border-style: solid; border-color: #c2dfc0; }
+
+
+/* ---- Print receipt ---- */
+@media print {
+  /* Sembunyikan semua elemen lain */
+  body * {
+    visibility: hidden !important;
+  }
+  
+  /* Tampilkan hanya area struk */
+  #receiptPrint, #receiptPrint * {
+    visibility: visible !important;
+  }
+  
+  /* Posisikan struk di atas kertas */
+  #receiptPrint {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 58mm !important; /* Ukuran standar kertas struk 58mm, ganti 80mm jika printer kamu lebih besar */
+    padding: 4mm !important;
+    margin: 0 !important;
+    background: #fff !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+    z-index: 99999 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Hilangkan border dan shadow kartu di struk */
+  #receiptPrint table, #receiptPrint div, #receiptPrint hr {
+    border-color: #000 !important;
+    box-shadow: none !important;
+  }
+}
